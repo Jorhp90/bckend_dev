@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #django rest framework
-    'rest_framework'
+    'rest_framework',
+    #apps
+    #'ecommerce_drf.user',
+    'user'
 ]
 
 MIDDLEWARE = [
