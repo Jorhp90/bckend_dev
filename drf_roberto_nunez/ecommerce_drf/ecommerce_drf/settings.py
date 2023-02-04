@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     #apps
     #'ecommerce_drf.user',
-    'user'
+    'user',
+    'products'
 ]
 
 MIDDLEWARE = [
