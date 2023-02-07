@@ -1,7 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/django,python,macos,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,python,macos,visualstudiocode
 
+/drf_roberto_nunez
 /drf_roberto_nunez/drf_roberto_nunez_venv
+/drf_simple_crud/venv
 
 ### Django ###
 *.log
