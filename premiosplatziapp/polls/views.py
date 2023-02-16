@@ -1,7 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Question, Choice
 from django.urls import reverse
+
+from .models import Question, Choice
+from .forms import UserRegisterForm
+
 
 # Create your views here.
 def index(request):
@@ -42,3 +45,16 @@ def summary(request):
     return render(request, 'polls/summary.html', {
         'questions':questions
     })
+
+def register_form(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            
+            return redirect('/polls_i/')
+    else:
+        form = UserRegisterForm()
+
+    return render(request, 'polls/register.html', {'form':form})

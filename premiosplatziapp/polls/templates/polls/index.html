@@ -7,6 +7,17 @@
     <title>Index</title>
 </head>
 <body>
+    <nav>
+        <div>Premios platzi app papu .l.</div>
+        {% if request.user.is_authenticated %}
+            <div>Welcome {{ request.user.username }} from {{ request.user.email }}</div>
+            <a href="{% url 'the_polls:logout_v' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'the_polls:register_v' %}">Register</a>
+            <a href="{% url 'the_polls:login_v' %}">Login</a>
+        {% endif %}
+
+    </nav>
     {% if latest_question_list %}
     <ul>
         {% for question in latest_question_list %}
