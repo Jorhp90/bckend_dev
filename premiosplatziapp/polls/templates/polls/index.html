@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <nav>
+        <div>Premios platzi app papu .l.</div>
+        {% if request.user.is_authenticated %}
+            <div>Welcome {{ request.user.username }} from {{ request.user.email }}</div>
+            <a href="{% url 'the_polls:logout_v' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'the_polls:register_v' %}">Register</a>
+            <a href="{% url 'the_polls:login_v' %}">Login</a>
+        {% endif %}
+
+    </nav>
+    {% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+        <li><a href="{% url 'the_polls:detail_v' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No polls available</p>
+    {% endif %}
+
+    <div><a href="{% url 'the_polls:summary_v' %}">Resultados</a></div>
+</body>
+</html>
