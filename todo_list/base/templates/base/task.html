@@ -1,1 +1,6 @@
+<p>Hola {{ request.user }}</p>
+<a href="{% url 'tasks_v' %}">Regresaa</a>
+
 <h1>Task: {{ task }}</h1>
+
+<h3>{{ task.description }}</h3>
