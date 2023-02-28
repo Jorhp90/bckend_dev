@@ -1,18 +1,27 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.views import generic
+from django.utils import timezone
 
 from .models import Question, Choice
 from .forms import UserRegisterForm
 
 
 # Create your views here.
-def index(request):
-    latest_question_list = Question.objects.all()
+# def index(request):
+#     latest_question_list = Question.objects.all()
 
-    return render(request, 'polls/index.html',
-                  {'latest_question_list':latest_question_list
-                   })
+#     return render(request, 'polls/index.html',
+#                   {'latest_question_list':latest_question_list
+#                    })
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        "return the last 5 published questions"
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5] #-pub_date descending order
 
 def detail(request, question_id_i):
     question = get_object_or_404(Question, pk=question_id_i)
@@ -22,6 +31,17 @@ def detail(request, question_id_i):
         'question':question,
         'choices_list':choices_list
     })
+
+
+# class DetailView(generic.DetailView):
+#     model = [Question, Choice]
+#     context_object_name = ['question', 'choice']
+#     template_name = 'polls/detail.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context
+    
 
 def vote(request, question_id_i):
     question = get_object_or_404(Question, pk=question_id_i)
