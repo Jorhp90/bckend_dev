@@ -5,16 +5,15 @@ from django.views import generic
 from django.utils import timezone
 
 from .models import Question, Choice
-from .forms import UserRegisterForm
-
+from .forms import UserRegisterForm 
 
 # Create your views here.
 # def index(request):
 #     latest_question_list = Question.objects.all()
-
 #     return render(request, 'polls/index.html',
 #                   {'latest_question_list':latest_question_list
 #                    })
+
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
