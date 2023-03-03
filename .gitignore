@@ -4,6 +4,7 @@
 /drf_roberto_nunez
 /drf_roberto_nunez/drf_roberto_nunez_venv
 /drf_simple_crud/venv
+/blog_project/venv
 
 ### Django ###
 *.log
