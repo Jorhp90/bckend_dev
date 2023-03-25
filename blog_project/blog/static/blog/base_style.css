@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+.headers {
+    height: 10rem;
+    width: 100%;
+    padding: 12px;
+    background-color: blanchedalmond;
+    font-size: 2rem;
+    color: brown;
+    display: inline-block;
+}
+.headers ul {
+    text-align: right;
+    position: absolute;
+    right: 24px;
+    top: 30px;
+}
+.headers .menu li {
+    display: inline;
+    margin: 12px;
+}
