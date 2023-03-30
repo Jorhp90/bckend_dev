@@ -6,6 +6,10 @@
 /drf_simple_crud/venv
 /blog_project/venv
 
+### node modules ###
+node_modules
+
+
 ### Django ###
 *.log
 *.pot
