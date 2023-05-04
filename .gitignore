@@ -4,6 +4,8 @@
 /drf_roberto_nunez
 /drf_roberto_nunez/drf_roberto_nunez_venv
 /drf_simple_crud/venv
+/view_authorization
+/django_tw_heroku
 
 ### Django ###
 *.log

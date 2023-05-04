@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block title %}{{ profile.email }}{% endblock title %}
+{% block content %}
+
+<!--follow/unfollow buttons-->
+<div class="column">
+
+    <div class="block">
+    <h1 class="title is-1">{{ profile.email.username|upper }} Dweets</h1>
+    <!--user variable sends with every GET and POST request The user variable 
+        holds information about the currently logged-in user-->
+    <form method="POST">
+        {% csrf_token %}
+        <div class="buttons has-addons">
+            {% if profile in user.profile.follows.all %}
+                <button class="button is-success is-static">Follow</button>
+                <button class="button is-danger" name="follow" value="unfollow">Unfollow</button>
+            {% else %}
+                <button class="button is-success" name="follow" value="follow">Follow</button>
+                <button class="button is-danger is-static">Unfollow</button>
+            {% endif %}
+        </div>
+    </form>
+    </div>
+
+    <div class="content">
+        {% for dweet in profile.email.dweets.all %}
+        <!-- profile from view context, email as FK between CustomUser and Dweet models, 
+            dweets as related_name fromn dweet model-->
+        <div class="box">
+            {{ dweet.body }}
+            <span class="is-small has-text-grey-light">
+                ({{ dweet.created_at }})
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+<!---->
+<div class="column is-one-third">
+<!--return to profile_listing view-->
+    <div class="block">
+        <a href="{% url "dwitter_app:profile_list_view" %}">
+            <button class="button is-dark is-outlined is-fullwidth">
+                All Profiles
+            </button>
+        </a>
+    </div>
+<!--Following list-->
+    <div class="block">
+        <h3 class="title is-4">
+            {{ profile.email.username }} follows:
+        </h3>
+        <div class="content">
+            <ul>
+            {% for following in profile.follows.all %}
+                <li>
+                    <a href="{% url "dwitter_app:profile_view" following.id %}">
+                        {{ following }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+<!--Followed by list-->
+    <div class="block">
+        <h3 class="title is-4">
+            {{ profile.email.username }} is followed by:
+        </h3>
+        <div class="content">
+            <ul>
+            {% for follower in profile.followed_by.all %}
+                <li>
+                    <a href="{% url "dwitter_app:profile_view" follower.id %}">
+                        {{ follower }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}
