@@ -4,8 +4,16 @@
 /drf_roberto_nunez
 /drf_roberto_nunez/drf_roberto_nunez_venv
 /drf_simple_crud/venv
+<<<<<<< HEAD
 /view_authorization
 /django_tw_heroku
+=======
+/blog_project/venv
+
+### node modules ###
+node_modules
+
+>>>>>>> 4fec0ccf526ce88829468b48af4c98207eb9a91d
 
 ### Django ###
 *.log
