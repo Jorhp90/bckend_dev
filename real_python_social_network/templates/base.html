@@ -8,12 +8,14 @@
     <title>{% block title %}{% endblock title %} | Dwitter </title>
 </head>
 <body>
+    <a href="{% url 'dwitter_app:dashboard_view' %}">
     <section class="hero is-small is-success mb-4">
         <div class="hero-body">
             <h1>Dwitter</h1>
             <p>Ur tiny social network with Django</p>
         </div>
     </section>
+    </a>
     <div class="container">
         <div class="columns">
             {% block content %}{% endblock content %}
