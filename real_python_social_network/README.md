@@ -33,7 +33,25 @@
   * list of dweets by user
   * form to follow/unfollow that user
 ---
+**Models** 🥞
 
+1. CustomUser
+  * email
+  * username
+  
+2. Profile
+  * email: FK to CustomUser
+  * follows: many to many with self
+
+3. create_profile (method): Create and connect profiles automatically when CustomUser is created
+
+4. Dweet
+   * email: FK to CustomUser
+   * body
+   * created_at: auto_now_add = True
+
+
+---
 **Next**
 1. User management
 2. Images and static files
