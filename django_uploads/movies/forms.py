@@ -1,5 +1,4 @@
 from movies.models import Movie
-#from django.forms import ModelForm
 from django import forms
 
 class UploadForm(forms.ModelForm):

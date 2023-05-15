@@ -1,18 +1,6 @@
 from django.shortcuts import render, redirect
 from movies.forms import UploadForm
 from movies.models import Movie
-
-def upload1(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        image = request.FILES.get('image_upload')
-
-        new_movie = Movie.objects.create(name = name, image=image)
-        new_movie.save()
-        return redirect('home_view')
-    else: 
-        return redirect('/')
-        
         
 def upload(request):
     if request.method == 'POST':
