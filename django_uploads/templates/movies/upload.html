@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+<title>{% block title %}Upload{% endblock title %}</title>
+
+{% block content %}
 <p>Upload</p>
 
 <form method="POST" enctype="multipart/form-data" action="">
@@ -5,3 +9,7 @@
     {{ form.as_p }}
     <input type="submit" value="mandalooou">
 </form>
+
+<a href="{% url 'home_view' %}">Al houm</a>
+
+{% endblock content %}
